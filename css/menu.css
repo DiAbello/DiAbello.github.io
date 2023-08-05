@@ -1,0 +1,22 @@
+.menu {
+    display: flex;
+    gap: 1rem;
+}
+
+.menu__items {
+    list-style: none;
+    display: flex;
+    gap: .5rem;
+}
+
+.menu__item {
+    padding: 1em 1.5em;
+    font-size: 1.125rem;
+    font-weight: 600;
+
+    transition: color .125s ease;
+}
+
+.menu__item:hover {
+    color: var(--c-primary-l);
+}

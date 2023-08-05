@@ -1,0 +1,28 @@
+:root {
+    --f-family: "Manrope";
+    --f-size: 16px;
+    --f-line-height: 1.5;
+
+
+    --c-base: #121B3E;
+    --c-rgb-base: 18, 27, 62;
+
+    --c-secondary: #FCFDFD;
+    --c-rgb-secondary: 252, 253, 253;
+
+
+    --c-primary-l: #6197FF;
+    --c-rgb-primary-l: 97, 151, 255;
+
+    --c-primary: #1849A0;
+    --c-rgb-primary: 24, 73, 160;
+
+    --c-primary-d: #314373;
+    --c-rgb-primary-d: 49, 67, 115;
+
+    --c-primary-g-l: #7190FF;
+    --c-rgb-primary-g-l: 113, 144, 255;
+
+    --c-primary-g: #6176AD;
+    --c-rgb-primary-g: 97, 118, 173;
+}

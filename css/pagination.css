@@ -1,0 +1,30 @@
+.pagination {
+    display: flex;
+    align-items: center;
+}
+
+.pagination__dots {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+}
+
+.pagination__dot {
+    width: .75rem;
+    height: .75rem;
+
+    border-radius: 100%;
+
+    background: content-box var(--c-primary-d);
+    border: .375rem solid transparent;
+}
+
+.pagination__dot_active {
+    background: var(--c-secondary);
+    border-color: var(--c-primary);
+}

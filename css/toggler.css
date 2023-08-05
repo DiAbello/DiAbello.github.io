@@ -1,0 +1,68 @@
+.toggler {
+    --fill: var(--c-primary-l);
+
+    font-size: 1.5rem;
+    width: 1em;
+    height: 1em;
+
+    background: transparent;
+    border: none;
+
+    position: relative;
+
+    cursor: pointer;
+
+    transition: rotate .125s ease;
+}
+
+.toggler__line,
+.toggler:before,
+.toggler:after {
+    content: '';
+    width: 100%;
+    height: 10%;
+
+    border-radius: 1000rem;
+
+    background-color: var(--fill);
+
+    position: absolute;
+    left: 0;
+    translate: 0 -50%;
+
+    transition: inherit;
+}
+
+.toggler:before {
+    top: 10%;
+}
+
+.toggler__line {
+    top: 50%;
+}
+
+.toggler:after {
+    top: 90%;
+}
+
+
+.toggler_active:before,
+.toggler_active:after,
+.toggler_active .toggler__line {
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.toggler_active .toggler__line {
+    width: 0;
+    height: 0;
+}
+
+.toggler_active:before {
+    rotate: 45deg;
+}
+
+.toggler_active:after {
+    rotate: -45deg;
+}

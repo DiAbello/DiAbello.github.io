@@ -1,0 +1,228 @@
+.story {
+    --content-padding: 6rem;
+    --infographic-width: 25%;
+    --infographic-stroke: .125rem;
+    --infographic-radius: 2rem;
+    --infographic-dot-pos: 75%;
+
+    position: relative;
+    display: flex;
+
+    transition-property: color, opacity, font-size, background-color, border;
+    transition-duration: .125s;
+    transition-timing-function: ease;
+}
+
+
+.story__blocks {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.story__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    color: var(--c-primary-g);
+}
+
+.story__header {
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+}
+
+.story__title {
+    font-size: 3rem;
+}
+
+.story__subtitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.story__content {
+    width: 50%;
+
+    padding-top: var(--content-padding);
+
+    display: flex;
+    gap: 1rem;
+
+    translate: 50%;
+}
+
+.story__text {
+    translate: 0 -.75em;
+}
+
+
+.story__infographic {
+    width: var(--infographic-width);
+    flex-shrink: 0;
+    position: relative;
+}
+
+.story__infographic:before {
+    content: '';
+    width: calc(var(--infographic-stroke) * .5);
+
+    background: linear-gradient(
+            rgba(var(--c-rgb-primary-l), 1) 0%,
+            rgba(var(--c-rgb-primary-l), 0) 100%
+    ), var(--c-base);
+
+    position: absolute;
+    top: calc(-1 * var(--content-padding));
+    bottom: 0;
+    left: 0;
+    translate: -50%;
+
+    z-index: 1;
+}
+
+.story__infographic:after {
+    --height: min(var(--infographic-radius), var(--content-padding));
+
+    content: '';
+    width: 100%;
+    height: var(--height);
+
+    position: absolute;
+    top: calc(var(--height) * -1);
+    left: calc(var(--infographic-stroke) * -.5);
+
+    padding: 0 0 var(--infographic-stroke) var(--infographic-stroke);
+    background: linear-gradient(
+            90deg,
+            rgba(var(--c-rgb-primary-l), .125) 20%,
+            rgba(var(--c-rgb-primary-l), 1) var(--infographic-dot-pos),
+            rgba(var(--c-rgb-primary-l), 0) 100%
+    ), var(--c-base);
+
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    border-top: none;
+    border-right: none;
+    border-bottom-left-radius: var(--infographic-radius);
+}
+
+
+.story__dot {
+    font-size: .75rem;
+
+    width: 1em;
+    height: 1em;
+    background-color: var(--c-primary-g-l);
+
+    border-radius: 100%;
+
+    position: absolute;
+    top: calc(var(--infographic-stroke) * .5);
+    left: var(--infographic-dot-pos);
+    translate: -50% -50%;
+    z-index: 2;
+
+    box-shadow: 0 0 2em 0 var(--c-primary-l),
+    0 0 2em 0 rgba(var(--c-rgb-primary-l), .25) inset;
+}
+
+.story__dot_main {
+    font-size: 1rem;
+
+    top: calc(-1 * var(--content-padding));
+    left: 0;
+}
+
+
+.story__pagination {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    translate: -125%;
+
+    transition: inherit;
+}
+
+
+.story__block_active {
+    color: var(--c-secondary);
+}
+
+.story__block_active .story__dot {
+    background-color: var(--c-primary-l);
+}
+
+.story__block_active .story__dot_main {
+    font-size: 1.5rem;
+    background-color: var(--c-secondary);
+}
+
+
+.story__block_hidden {
+    color: var(--c-primary-d);
+    transition: 0s;
+}
+
+.story__block_hidden .story__content,
+.story__block_hidden .story__subtitle {
+    opacity: 0;
+}
+
+
+@media only screen and (min-width: 1100px) {
+    .story__block:nth-of-type(2n) .story__content {
+        flex-direction: row-reverse;
+        translate: -50%;
+    }
+
+    .story__block:nth-of-type(2n) .story__infographic {
+        transform: scaleX(-1);
+    }
+
+    .story__block:nth-of-type(2n) .story__text {
+        text-align: right;
+    }
+}
+
+
+@media only screen and (max-width: 1100px) {
+    .story {
+        --infographic-dot-pos: 100%;
+    }
+
+    .story__block {
+        align-items: start;
+    }
+
+    .story__header {
+        width: auto;
+        text-align: left;
+        align-items: start;
+    }
+
+    .story__title {
+        font-size: 2.5rem;
+    }
+
+    .story__content {
+        width: auto;
+        translate: .75rem;
+    }
+
+    .story__pagination {
+        display: none;
+    }
+}
